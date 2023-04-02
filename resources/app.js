@@ -126,6 +126,7 @@ function refreshInfos()
         } else {
             elem.innerHTML += "/";
         }
+        elem.scrollTop = 9999999;
     }).catch((error) => {
         console.log(error);
     });

@@ -7,118 +7,119 @@
         <script type="text/javascript" src="resources/app.js"></script>
     </head>
     <body>
-        <table class="chess-board">
-            <tbody>
-                <tr>
-                    <th></th>
-                    <th>a</th>
-                    <th>b</th>
-                    <th>c</th>
-                    <th>d</th>
-                    <th>e</th>
-                    <th>f</th>
-                    <th>g</th>
-                    <th>h</th>
-                </tr>
-                <tr>
-                    <th>8</th>
-                    <td class="light x8 y1"></td>
-                    <td class="dark x8 y2"></td>
-                    <td class="light x8 y3"></td>
-                    <td class="dark x8 y4"></td>
-                    <td class="light x8 y5"></td>
-                    <td class="dark x8 y6"></td>
-                    <td class="light x8 y7"></td>
-                    <td class="dark x8 y8"></td>
-                </tr>
-                <tr>
-                    <th>7</th>
-                    <td class="dark x7 y1"></td>
-                    <td class="light x7 y2"></td>
-                    <td class="dark x7 y3"></td>
-                    <td class="light x7 y4"></td>
-                    <td class="dark x7 y5"></td>
-                    <td class="light x7 y6"></td>
-                    <td class="dark x7 y7"></td>
-                    <td class="light x7 y8"></td>
-                </tr>
-                <tr>
-                    <th>6</th>
-                    <td class="light x6 y1"></td>
-                    <td class="dark x6 y2"></td>
-                    <td class="light x6 y3"></td>
-                    <td class="dark x6 y4"></td>
-                    <td class="light x6 y5"></td>
-                    <td class="dark x6 y6"></td>
-                    <td class="light x6 y7"></td>
-                    <td class="dark x6 y8"></td>
-                </tr>
-                <tr>
-                    <th>5</th>
-                    <td class="dark x5 y1"></td>
-                    <td class="light x5 y2"></td>
-                    <td class="dark x5 y3"></td>
-                    <td class="light x5 y4"></td>
-                    <td class="dark x5 y5"></td>
-                    <td class="light x5 y6"></td>
-                    <td class="dark x5 y7"></td>
-                    <td class="light x5 y8"></td>
-                </tr>
-                <tr>
-                    <th>4</th>
-                    <td class="light x4 y1"></td>
-                    <td class="dark x4 y2"></td>
-                    <td class="light x4 y3"></td>
-                    <td class="dark x4 y4"></td>
-                    <td class="light x4 y5"></td>
-                    <td class="dark x4 y6"></td>
-                    <td class="light x4 y7"></td>
-                    <td class="dark x4 y8"></td>
-                </tr>
-                <tr>
-                    <th>3</th>
-                    <td class="dark x3 y1"></td>
-                    <td class="light x3 y2"></td>
-                    <td class="dark x3 y3"></td>
-                    <td class="light x3 y4"></td>
-                    <td class="dark x3 y5"></td>
-                    <td class="light x3 y6"></td>
-                    <td class="dark x3 y7"></td>
-                    <td class="light x3 y8"></td>
-                </tr>
-                <tr>
-                    <th>2</th>
-                    <td class="light x2 y1"></td>
-                    <td class="dark x2 y2"></td>
-                    <td class="light x2 y3"></td>
-                    <td class="dark x2 y4"></td>
-                    <td class="light x2 y5"></td>
-                    <td class="dark x2 y6"></td>
-                    <td class="light x2 y7"></td>
-                    <td class="dark x2 y8"></td>
-                </tr>
-                <tr>
-                    <th>1</th>
-                    <td class="dark x1 y1"></td>
-                    <td class="light x1 y2"></td>
-                    <td class="dark x1 y3"></td>
-                    <td class="light x1 y4"></td>
-                    <td class="dark x1 y5"></td>
-                    <td class="light x1 y6"></td>
-                    <td class="dark x1 y7"></td>
-                    <td class="light x1 y8"></td>
-                </tr>
-            </tbody>
-        </table>
-
-        <br><br>
-        <div id="player-turn"></div>
-        <div id="white-points"></div>
-        <div id="black-points"></div>
-        <div id="white-graveyard"></div>
-        <div id="black-graveyard"></div>
-        <div id="historic"></div>
-        <br><br>
-        <button onclick="resetGame()">(Re)commencer une partie</button>
+        <div class="box">
+            <table class="chess-board">
+                <tbody>
+                    <tr>
+                        <th></th>
+                        <th>a</th>
+                        <th>b</th>
+                        <th>c</th>
+                        <th>d</th>
+                        <th>e</th>
+                        <th>f</th>
+                        <th>g</th>
+                        <th>h</th>
+                    </tr>
+                    <tr>
+                        <th>8</th>
+                        <td class="light x8 y1"></td>
+                        <td class="dark x8 y2"></td>
+                        <td class="light x8 y3"></td>
+                        <td class="dark x8 y4"></td>
+                        <td class="light x8 y5"></td>
+                        <td class="dark x8 y6"></td>
+                        <td class="light x8 y7"></td>
+                        <td class="dark x8 y8"></td>
+                    </tr>
+                    <tr>
+                        <th>7</th>
+                        <td class="dark x7 y1"></td>
+                        <td class="light x7 y2"></td>
+                        <td class="dark x7 y3"></td>
+                        <td class="light x7 y4"></td>
+                        <td class="dark x7 y5"></td>
+                        <td class="light x7 y6"></td>
+                        <td class="dark x7 y7"></td>
+                        <td class="light x7 y8"></td>
+                    </tr>
+                    <tr>
+                        <th>6</th>
+                        <td class="light x6 y1"></td>
+                        <td class="dark x6 y2"></td>
+                        <td class="light x6 y3"></td>
+                        <td class="dark x6 y4"></td>
+                        <td class="light x6 y5"></td>
+                        <td class="dark x6 y6"></td>
+                        <td class="light x6 y7"></td>
+                        <td class="dark x6 y8"></td>
+                    </tr>
+                    <tr>
+                        <th>5</th>
+                        <td class="dark x5 y1"></td>
+                        <td class="light x5 y2"></td>
+                        <td class="dark x5 y3"></td>
+                        <td class="light x5 y4"></td>
+                        <td class="dark x5 y5"></td>
+                        <td class="light x5 y6"></td>
+                        <td class="dark x5 y7"></td>
+                        <td class="light x5 y8"></td>
+                    </tr>
+                    <tr>
+                        <th>4</th>
+                        <td class="light x4 y1"></td>
+                        <td class="dark x4 y2"></td>
+                        <td class="light x4 y3"></td>
+                        <td class="dark x4 y4"></td>
+                        <td class="light x4 y5"></td>
+                        <td class="dark x4 y6"></td>
+                        <td class="light x4 y7"></td>
+                        <td class="dark x4 y8"></td>
+                    </tr>
+                    <tr>
+                        <th>3</th>
+                        <td class="dark x3 y1"></td>
+                        <td class="light x3 y2"></td>
+                        <td class="dark x3 y3"></td>
+                        <td class="light x3 y4"></td>
+                        <td class="dark x3 y5"></td>
+                        <td class="light x3 y6"></td>
+                        <td class="dark x3 y7"></td>
+                        <td class="light x3 y8"></td>
+                    </tr>
+                    <tr>
+                        <th>2</th>
+                        <td class="light x2 y1"></td>
+                        <td class="dark x2 y2"></td>
+                        <td class="light x2 y3"></td>
+                        <td class="dark x2 y4"></td>
+                        <td class="light x2 y5"></td>
+                        <td class="dark x2 y6"></td>
+                        <td class="light x2 y7"></td>
+                        <td class="dark x2 y8"></td>
+                    </tr>
+                    <tr>
+                        <th>1</th>
+                        <td class="dark x1 y1"></td>
+                        <td class="light x1 y2"></td>
+                        <td class="dark x1 y3"></td>
+                        <td class="light x1 y4"></td>
+                        <td class="dark x1 y5"></td>
+                        <td class="light x1 y6"></td>
+                        <td class="dark x1 y7"></td>
+                        <td class="light x1 y8"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="right-pan">
+                <div class="pan-item" id="player-turn"></div>
+                <div class="pan-item" id="white-points"></div>
+                <div class="pan-item" id="black-points"></div>
+                <div class="pan-item" id="white-graveyard"></div>
+                <div class="pan-item" id="black-graveyard"></div>
+                <div class="pan-item" id="historic"></div>
+                <button onclick="resetGame()">(Re)commencer une partie</button>
+            </div>
+        </div>
     </body>
 </html>
