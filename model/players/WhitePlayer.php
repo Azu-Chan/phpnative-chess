@@ -13,22 +13,22 @@ class WhitePlayer extends Player
     public function getInitialPieces(): array
     {
         return [
-            new Pawn(Piece::WHITE, 7, 1),
-            new Pawn(Piece::WHITE, 7, 2),
-            new Pawn(Piece::WHITE, 7, 3),
-            new Pawn(Piece::WHITE, 7, 4),
-            new Pawn(Piece::WHITE, 7, 5),
-            new Pawn(Piece::WHITE, 7, 6),
-            new Pawn(Piece::WHITE, 7, 7),
-            new Pawn(Piece::WHITE, 7, 8),
-            new Rook(Piece::WHITE, 8, 1),
-            new Rook(Piece::WHITE, 8, 8),
-            new Bishop(Piece::WHITE, 8, 2),
-            new Bishop(Piece::WHITE, 8, 7),
-            new Queen(Piece::WHITE, 8, 4),
-            new King(Piece::WHITE, 8, 5),
-            new Knight(Piece::WHITE, 8, 3),
-            new Knight(Piece::WHITE, 8, 6),
+            new Pawn(Piece::WHITE, 2, 1),
+            new Pawn(Piece::WHITE, 2, 2),
+            new Pawn(Piece::WHITE, 2, 3),
+            new Pawn(Piece::WHITE, 2, 4),
+            new Pawn(Piece::WHITE, 2, 5),
+            new Pawn(Piece::WHITE, 2, 6),
+            new Pawn(Piece::WHITE, 2, 7),
+            new Pawn(Piece::WHITE, 2, 8),
+            new Rook(Piece::WHITE, 1, 1),
+            new Rook(Piece::WHITE, 1, 8),
+            new Bishop(Piece::WHITE, 1, 2),
+            new Bishop(Piece::WHITE, 1, 7),
+            new Queen(Piece::WHITE, 1, 4),
+            new King(Piece::WHITE, 1, 5),
+            new Knight(Piece::WHITE, 1, 3),
+            new Knight(Piece::WHITE, 1, 6),
         ];
     }
 }

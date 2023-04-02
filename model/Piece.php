@@ -12,6 +12,8 @@ abstract class Piece
     public int $xPosition;
     public int $yPosition;
 
+    public bool $moved;
+
     public function __construct(int $color, int $xPosition, int $yPosition)
     {
         if ($color !== self::BLACK && $color !== self::WHITE) {
@@ -21,6 +23,7 @@ abstract class Piece
         $this->color = $color;
         $this->xPosition = $xPosition;
         $this->yPosition = $yPosition;
+        $this->moved = false;
     }
 
     public abstract function canMove(int $toX, int $toY, Board $board): bool;

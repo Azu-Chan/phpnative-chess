@@ -29,6 +29,45 @@ class King extends Piece
             return true;
         }
 
+        if ($this->canCastle($toX, $toY, $board)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function canCastle(int $toX, int $toY, Board $board): bool
+    {
+        if ($this->color === Piece::WHITE && $this->moved === false && $this->xPosition === 1 && $this->yPosition === 5) {
+            if ($toX === 1 && $toY === 7 && $board->getBoard()[1][6] === null
+            && $board->getBoard()[1][7] === null && $board->getBoard()[1][8] instanceof Rook
+            && $board->getBoard()[1][8]->color === Piece::WHITE && $board->getBoard()[1][8]->moved === false) {
+                return true;
+            }
+
+            if ($toX === 1 && $toY === 3 && $board->getBoard()[1][4] === null
+            && $board->getBoard()[1][3] === null && $board->getBoard()[1][2] === null 
+            && $board->getBoard()[1][1] instanceof Rook && $board->getBoard()[1][1]->color === Piece::WHITE
+            && $board->getBoard()[1][1]->moved === false) {
+                return true;
+            }
+        }
+
+        if ($this->color === Piece::BLACK && $this->moved === false && $this->xPosition === 8 && $this->yPosition === 5) {
+            if ($toX === 8 && $toY === 7 && $board->getBoard()[8][6] === null
+            && $board->getBoard()[8][7] === null && $board->getBoard()[8][8] instanceof Rook
+            && $board->getBoard()[8][8]->color === Piece::BLACK && $board->getBoard()[8][8]->moved === false) {
+                return true;
+            }
+
+            if ($toX === 8 && $toY === 3 && $board->getBoard()[8][4] === null
+            && $board->getBoard()[8][3] === null && $board->getBoard()[8][2] === null 
+            && $board->getBoard()[8][1] instanceof Rook && $board->getBoard()[8][1]->color === Piece::BLACK
+            && $board->getBoard()[8][1]->moved === false) {
+                return true;
+            }
+        }
+
         return false;
     }
 }

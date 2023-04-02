@@ -114,19 +114,28 @@ class Board
         }
 
         if ($piece->canMove($toX, $toY, $this)) {
-            $this->board[$fromX][$fromY] = null;
+            if ($piece instanceof King && $piece->canCastle($toX, $toY, $this)) {
+                $this->doCastle($piece, $toX, $toY);
 
-            $this->takePiece($this->board[$toX][$toY]);
+                $this->currentPlayer = ($this->currentPlayer->getColor() === Piece::WHITE) ? $this->blackPlayer : $this->whitePlayer;
+    
+                $this->historic[] = $piece->char . ' roqué de ' . $this->getPrintableCoordinate($fromX, $fromY) . ' à ' . $this->getPrintableCoordinate($toX, $toY) . '.';
+            } else {
+                $this->board[$fromX][$fromY] = null;
 
-            $piece->xPosition = $toX;
-            $piece->yPosition = $toY;
-
-            $this->board[$toX][$toY] = $piece;
-
-            $this->currentPlayer = ($this->currentPlayer->getColor() === Piece::WHITE) ? $this->blackPlayer : $this->whitePlayer;
-
-            $this->historic[] = $piece->char . ' déplacé de ' . $this->getPrintableCoordinate($fromX, $fromY) . ' à ' . $this->getPrintableCoordinate($toX, $toY) . '.';
-
+                $this->takePiece($this->board[$toX][$toY]);
+    
+                $piece->xPosition = $toX;
+                $piece->yPosition = $toY;
+    
+                $this->board[$toX][$toY] = $piece;
+                $piece->moved = true;
+    
+                $this->currentPlayer = ($this->currentPlayer->getColor() === Piece::WHITE) ? $this->blackPlayer : $this->whitePlayer;
+    
+                $this->historic[] = $piece->char . ' déplacé de ' . $this->getPrintableCoordinate($fromX, $fromY) . ' à ' . $this->getPrintableCoordinate($toX, $toY) . '.';
+            }
+            
             $this->checkVictory();
         } else {
             throw new \Exception('Impossible de bouger la pièce de la case ' . $this->getPrintableCoordinate($fromX, $fromY) 
@@ -194,6 +203,87 @@ class Board
                 $this->historic[] = 'Le joueur noir a gagné !';
                 $this->currentPlayer = null;
                 return;
+            }
+        }
+    }
+
+    private function doCastle(King $king, int $toX, int $toY): void
+    {
+        if ($king->color === Piece::WHITE && $king->moved === false && $king->xPosition === 1 && $king->yPosition === 5) {
+            if ($toX === 1 && $toY === 7 && $this->board[1][6] === null
+            && $this->board[1][7] === null && $this->board[1][8] instanceof Rook
+            && $this->board[1][8]->color === Piece::WHITE && $this->board[1][8]->moved === false) {
+                $rook = $this->board[1][8];
+                $king->xPosition = 1;
+                $king->yPosition = 7;
+                $rook->xPosition = 1;
+                $rook->yPosition = 6;
+    
+                $this->board[1][7] = $king;
+                $this->board[1][6] = $rook;
+                $this->board[1][5] = null;
+                $this->board[1][8] = null;
+
+                $king->moved = true;
+                $this->board[1][6]->moved = true;
+            }
+
+            if ($toX === 1 && $toY === 3 && $this->board[1][4] === null
+            && $this->board[1][3] === null && $this->board[1][2] === null 
+            && $this->board[1][1] instanceof Rook && $this->board[1][1]->color === Piece::WHITE
+            && $this->board[1][1]->moved === false) {
+                $rook = $this->board[1][1];
+                $king->xPosition = 1;
+                $king->yPosition = 3;
+                $rook->xPosition = 1;
+                $rook->yPosition = 4;
+    
+                $this->board[1][3] = $king;
+                $this->board[1][4] = $rook;
+                $this->board[1][5] = null;
+                $this->board[1][1] = null;
+
+                $king->moved = true;
+                $this->board[1][4]->moved = true;
+            }
+        }
+
+        if ($king->color === Piece::BLACK && $king->moved === false && $king->xPosition === 8 && $king->yPosition === 5) {
+            if ($toX === 8 && $toY === 7 && $this->board[8][6] === null
+            && $this->board[8][7] === null && $this->board[8][8] instanceof Rook
+            && $this->board[8][8]->color === Piece::BLACK && $this->board[8][8]->moved === false) {
+                $rook = $this->board[8][8];
+                $king->xPosition = 8;
+                $king->yPosition = 7;
+                $rook->xPosition = 8;
+                $rook->yPosition = 6;
+    
+                $this->board[8][7] = $king;
+                $this->board[8][6] = $rook;
+                $this->board[8][5] = null;
+                $this->board[8][8] = null;
+
+                $king->moved = true;
+                $this->board[8][6]->moved = true;
+            }
+
+            if ($toX === 8 && $toY === 3 && $this->board[8][4] === null
+            && $this->board[8][3] === null && $this->board[8][2] === null 
+            && $this->board[8][1] instanceof Rook && $this->board[8][1]->color === Piece::BLACK
+            && $this->board[8][1]->moved === false) {
+                $rook = $this->board[8][1];
+                $king->xPosition = 8;
+                $king->yPosition = 3;
+                $rook->xPosition = 8;
+                $rook->yPosition = 4;
+    
+                $this->board[8][3] = $king;
+                $this->board[8][4] = $rook;
+                $this->board[8][5] = null;
+                $this->board[8][1] = null;
+
+                $king->moved = true;
+                $this->board[8][4]->moved = true;
             }
         }
     }
