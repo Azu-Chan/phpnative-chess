@@ -32,11 +32,12 @@ Placer l'arboréscence dans le dossier www de votre serveur web ou dans un répe
 * Affichage de la somme des valeurs des pièces pour chaque joueur
 * Affichage des pièces capturées par les joueurs
 * Affichage d'un historique des coups de jeu, roques et victoire en cas de roi pris
+* Le roi ne peut pas aller sur une case qui le met en échec
 
 ## TODO
 
 * Tests unitaires
 * Implémenter la promotion de pion
-* Implémenter les vérifications d'échec au roi
+* Implémenter les vérifications d'échec et mat du roi et pat
 * Améliorer l'ux/ui
 * Mettre un timer

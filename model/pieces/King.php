@@ -17,10 +17,30 @@ class King extends Piece
             if ($board->getBoard()[$toX][$toY] instanceof Piece && $board->getBoard()[$toX][$toY]->color === Piece::BLACK) {
                 return false;
             }
+
+            // Le roi ne peut pas bouger sur une case qui le met en echec
+            for ($x=1; $x <= Board::DIMENSION; $x++) {
+                for ($y=1; $y <= Board::DIMENSION; $y++) {
+                    if ($board->getBoard()[$x][$y] instanceof Piece && ! $board->getBoard()[$x][$y] instanceof King
+                    && $board->getBoard()[$x][$y]->color === Piece::WHITE && $board->getBoard()[$x][$y]->canMove($toX, $toY, $board)) {
+                        return false;
+                    }
+                }
+            }
         }
         if ($this->color === Piece::WHITE) {
             if ($board->getBoard()[$toX][$toY] instanceof Piece && $board->getBoard()[$toX][$toY]->color === Piece::WHITE) {
                 return false;
+            }
+
+            // Le roi ne peut pas bouger sur une case qui le met en echec
+            for ($x=1; $x <= Board::DIMENSION; $x++) {
+                for ($y=1; $y <= Board::DIMENSION; $y++) {
+                    if ($board->getBoard()[$x][$y] instanceof Piece && ! $board->getBoard()[$x][$y] instanceof King
+                    && $board->getBoard()[$x][$y]->color === Piece::BLACK && $board->getBoard()[$x][$y]->canMove($toX, $toY, $board)) {
+                        return false;
+                    }
+                }
             }
         }
 
